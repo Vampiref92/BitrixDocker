@@ -2,7 +2,7 @@ version: '2'
 
 services:
     php:
-        build: ./${PHP_VERSION}
+        build: ./docker/php/${PHP_VERSION}
         container_name: php
         volumes_from:
             - source
@@ -17,7 +17,7 @@ services:
             - bitrix
         restart: always
     web_server:
-        build: ./${WEB_SERVER_TYPE}
+        build: ./docker/${WEB_SERVER_TYPE}
         container_name: webserver
         depends_on:
             - source
@@ -32,7 +32,7 @@ services:
             - bitrix
         restart: always
     mysql:
-        build: ./mysql
+        build: ./docker/mysql
         container_name: mysql
         volumes_from:
             - source
@@ -68,8 +68,6 @@ services:
             - ./data/memcached:/var/lib/memcached
             - ./www/html:/var/www/html
             - ${SITE_PATH}:/var/www/bitrix
-            - ${SITE_BITRIX_PATH}:/var/www/bitrix/bitrix
-            - ${SITE_UPLOAD_PATH}:/var/www/bitrix/upload
             - /etc/localtime:/etc/localtime/:ro
         networks:
             - bitrix
