@@ -1,4 +1,6 @@
 ![Alt text](assets/logo.jpg?raw=true "BitrixDock")
+За базу взят https://github.com/bitrixdock/bitrixdock
+Описание готовится к обновлению
 
 # BitrixDock
 BitrixDock позволяет легко и просто запускать **Bitrix CMS** на **Docker**.
@@ -88,10 +90,3 @@ docker-compose up -d
 
 P.S.
 Виртуальная машина от разработчиков битрикс на Apache, а у нас на Nginx, а он работает намного быстрее и кушает меньше памяти.
-
-# Ищем контрибьюторов  
-Помогите развитию проекта! Требуется закрывать задачи в [issue](https://github.com/bitrixdock/bitrixdock/issues)
-
-# Рекомендуем
-- Бекап БД в FTP хранилище по расписанию https://github.com/vmpartner/mysql-buckup
-- Работа с системой битрикс https://github.com/SidiGi/bitrix-info/wiki
