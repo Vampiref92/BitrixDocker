@@ -1,6 +1,7 @@
 ![Alt text](assets/logo.jpg?raw=true "BitrixDock")
 
 **За базу взят https://github.com/bitrixdock/bitrixdock
+
 Описание готовится к обновлению**
 
 # BitrixDock
