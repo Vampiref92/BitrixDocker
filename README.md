@@ -1,7 +1,7 @@
 ![Alt text](assets/logo.jpg?raw=true "BitrixDock")
 
-```За базу взят https://github.com/bitrixdock/bitrixdock
-Описание готовится к обновлению```
+**За базу взят https://github.com/bitrixdock/bitrixdock
+Описание готовится к обновлению**
 
 # BitrixDock
 BitrixDock позволяет легко и просто запускать **Bitrix CMS** на **Docker**.
