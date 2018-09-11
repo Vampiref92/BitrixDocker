@@ -11,8 +11,6 @@ services:
         links:
             - mysql
             - memcached
-        environment:
-            PHP_VERSION_NUMBER: ${PHP_VERSION}
         networks:
             - bitrix
         restart: always
@@ -45,6 +43,7 @@ services:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
         networks:
             - bitrix
+        command: --default-authentication-plugin=mysql_native_password
         restart: always
     memcached:
         image: memcached:1.5-alpine

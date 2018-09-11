@@ -1,0 +1,44 @@
+[client]
+default-character-set          = utf8
+default-time-zone              = "+03:00"
+
+[mysqld]
+skip-name-resolve
+character-set-server           = utf8
+collation-server               = utf8_unicode_ci
+sql-mode                       = ""
+sql_mode                       = ""
+tmpdir                         = /dev/shm
+sync_binlog                    = 0
+binlog_cache_size              = 0
+#query-cache-size              = 64M
+#query-cache-limit             = 4M
+max-connections                = 200
+table-open-cache               = 4096
+thread-cache-size              = 64
+max-heap-table-size            = 64M
+tmp-table-size                 = 64M
+key-buffer-size                = 16M
+join-buffer-size               = 4M
+sort-buffer-size               = 4M
+bulk-insert-buffer-size        = 2M
+myisam-sort-buffer-size        = 2M
+default-storage-engine         = innodb
+transaction-isolation          = READ-COMMITTED
+
+innodb-log-file-size           = 64M
+innodb-buffer-pool-size        = 512M
+innodb-buffer-pool-instances   = 4
+innodb-flush-log-at-trx-commit = 2
+innodb_file_per_table=1
+# Try to replace O_DIRECT by O_DSYNC if you have "Operating system error number 22"
+innodb_flush_method            = O_DIRECT
+
+interactive-timeout            = 180
+wait-timeout                   = 180
+
+[mysqldump]
+quick
+quote-names
+max_allowed_packet             = 16M
+default-character-set          = utf8

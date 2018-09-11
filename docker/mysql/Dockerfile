@@ -1,8 +1,9 @@
+#8.0
 FROM mysql:5.7
 
 MAINTAINER vitams
 
-ADD my.cnf /etc/mysql/conf.d/my.cnf
+COPY ./bitrix.cnf /etc/mysql/conf.d/
 
 CMD ["mysqld"]
 
