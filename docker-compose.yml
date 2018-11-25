@@ -28,21 +28,21 @@ services:
             - '${INTERFACE}:443:443'
         links:
             - php
-        networks: 
+        networks:
             - bitrix
         restart: always
     mysql:
-        build: ./docker/mysql
+        image: mysql:${MYSQL_VERSION}
         container_name: mysql
         volumes_from:
             - source
         ports:
-            - '${INTERFACE}:3306:3306'
+            - '${INTERFACE}:33061:3306'
         environment:
-            MYSQL_DATABASE: ${MYSQL_DATABASE}
-            MYSQL_USER: ${MYSQL_USER}
-            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
         networks:
             - bitrix
         restart: always
