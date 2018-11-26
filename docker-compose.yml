@@ -32,7 +32,8 @@ services:
             - bitrix
         restart: always
     mysql:
-        image: mysql:${MYSQL_VERSION}
+        build: ./docker/mysql/${MYSQL_VERSION}
+#        image: mysql:${MYSQL_VERSION}
         container_name: mysql
         volumes_from:
             - source
