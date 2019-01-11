@@ -1,6 +1,6 @@
 [client]
 default-character-set          = utf8
-default-time-zone              = "+03:00"
+#default-time-zone              = "+03:00"
 
 [mysqld]
 skip-name-resolve

@@ -5,6 +5,7 @@ MYSQL_CONTAINER_NAME="mysql"
 PATH_TO_BACKUP="/home/frolov/bitrixFiles/toplivnye-karty/bitrix.sql"
 
 . ./.env
+. ./mysql_backuper.sh
 
 # проверяем есть ли БД, если нет то создаем
 DB="$(docker exec -i ${MYSQL_CONTAINER_NAME} mysql -uroot -e 'SHOW DATABASES')"
