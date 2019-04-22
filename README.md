@@ -64,10 +64,14 @@ bash start.sh
 - Для загрузки резервной копии в контейнер используйте команду: ```cat /var/www/bitrix/backup.sql | docker exec -i mysql /usr/bin/mysql -u root -p123 bitrix```
 
 ### Backup
+```
 docker exec CONTAINER /usr/bin/mysqldump -u root --password=root DATABASE > backup.sql
+```
 
 ### Restore
+```
 cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root DATABASE
+```
 
 ## Отличие от виртуальной машины Битрикс
 Виртуальная машина от разработчиков битрикс решает ту же задачу, что и BitrixDock - предоставляет готовое окружение. Разница лишь в том, что Docker намного удобнее, проще и легче в поддержке.
@@ -77,7 +81,9 @@ cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root
 Если у вас появится новый проект и поменяется окружение, достаточно скопировать чистую виртуалку (если вы на винде), скопировать папку BitrixDock, добавить или заменить сервисы и запустить.
 
 ## Запуск генерации орм в докере
+```
 docker exec -it php php bitrix/bitrix.php orm:annotate -m b24connector,bitrixcloud,blog,clouds,compression,fileman,highloadblock,landing,main,messageservice,mobileapp,perfmon,photogallery,rest,scale,search,security,seo,socialservices,subscribe,translate,ui,vote
+```
 
 ## Composer
 Composer усанавливает как обычно
