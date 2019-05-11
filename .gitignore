@@ -2,3 +2,5 @@
 /logs
 /data
 .env
+/www/html/*
+!/www/html/.gitkeep
