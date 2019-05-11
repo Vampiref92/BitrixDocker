@@ -73,20 +73,20 @@ docker exec CONTAINER /usr/bin/mysqldump -u root --password=root DATABASE > back
 cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root DATABASE
 ```
 
-## Отличие от виртуальной машины Битрикс
-Виртуальная машина от разработчиков битрикс решает ту же задачу, что и BitrixDock - предоставляет готовое окружение. Разница лишь в том, что Docker намного удобнее, проще и легче в поддержке.
-
-Как только вы запускаете виртуалку, Docker сервисы автоматически стартуют, т.е. вы запускаете свой минихостинг для проекта и он сразу доступен.
-
-Если у вас появится новый проект и поменяется окружение, достаточно скопировать чистую виртуалку (если вы на винде), скопировать папку BitrixDock, добавить или заменить сервисы и запустить.
-
 ## Запуск генерации орм в докере
 ```
 docker exec -it php php bitrix/bitrix.php orm:annotate -m b24connector,bitrixcloud,blog,clouds,compression,fileman,highloadblock,landing,main,messageservice,mobileapp,perfmon,photogallery,rest,scale,search,security,seo,socialservices,subscribe,translate,ui,vote
 ```
 
 ## Composer
-Composer усанавливает как обычно
+Composer усанавливает как обычно локально с нужной версией php, например
+```
+/usr/bin/php7.1 local/composer.phar install
+```
+либо
+```
+docker exec -it php php local/composer.phar install
+```
 
 ## Работа с докером
 удаление всех мостов
