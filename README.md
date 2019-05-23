@@ -54,9 +54,13 @@ SITE_PATH=/var/www/bitrix  # Путь к директории Вашего са�
 ```
 bash start.sh
 ```
+Может понадобиться установить локальные службы
+```
+bash stop_local.sh
+```
 Чтобы проверить, что все сервисы запустились посмотрите список процессов ```docker ps```.  
 Посмотрите все прослушиваемые порты, должны быть 80, 11211, 9000 ```netstat -plnt```.  
-Откройте IP машины в браузере.
+Откройте адрес сайта или ip в браузере.
 
 ## Примечание
 - Если вы хотите начать с чистой установки Битрикса, скачайте файл [bitrixsetup.php](http://www.1c-bitrix.ru/download/scripts/bitrixsetup.php) в папку с сайтом. По умолчанию стоит папка ```/var/www/bitrix/```
@@ -65,7 +69,7 @@ bash start.sh
 
 ### Backup
 ```
-docker exec CONTAINER /usr/bin/mysqldump -u root --password=root DATABASE > backup.sql
+docker exec CONTAINER /usr/bin/mysqldump -u root --password=root DATABASE > backup.sqlвыпол
 ```
 
 ### Restore
@@ -73,20 +77,32 @@ docker exec CONTAINER /usr/bin/mysqldump -u root --password=root DATABASE > back
 cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root DATABASE
 ```
 
+### Подключение к БД
+```
+mysql -u #root user# -h #container ip# -P 33061 -p#root password#
+```
+```
+mysql -u root -h 192.168.10.11 -P 33061 -p123
+```
+
 ## Запуск генерации орм в докере
 ```
-docker exec -it php php bitrix/bitrix.php orm:annotate -m b24connector,bitrixcloud,blog,clouds,compression,fileman,highloadblock,landing,main,messageservice,mobileapp,perfmon,photogallery,rest,scale,search,security,seo,socialservices,subscribe,translate,ui,vote
+docker exec -it php php -d memnory_limit=-1 bitrix/bitrix.php orm:annotate -m all
+```
+Если с ошибками исключаем модули, может получиться примерно так
+```
+docker exec -it php php -d memnory_limit=-1 bitrix/bitrix.php orm:annotate -m b24connector,bitrixcloud,blog,clouds,compression,fileman,highloadblock,landing,main,messageservice,mobileapp,perfmon,photogallery,rest,scale,search,security,seo,socialservices,subscribe,translate,ui,vote
 ```
 
 ## Composer
-Composer усанавливает как обычно локально с нужной версией php, например
-```
-/usr/bin/php7.1 local/composer.phar install
-```
-либо
+Composer усанавливает через докер:
 ```
 заходим в папку local(с composer.json)
 docker exec -it php php -d memnory_limit=-1 composer.phar install
+```
+либо как обычно локально с нужной версией php, например
+```
+/usr/bin/php7.1 local/composer.phar install
 ```
 
 ## Работа с докером
