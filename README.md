@@ -85,7 +85,8 @@ Composer усанавливает как обычно локально с нуж
 ```
 либо
 ```
-docker exec -it php php local/composer.phar install
+заходим в папку local(с composer.json)
+docker exec -it php composer install
 ```
 
 ## Работа с докером
