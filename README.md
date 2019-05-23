@@ -86,7 +86,7 @@ Composer усанавливает как обычно локально с нуж
 либо
 ```
 заходим в папку local(с composer.json)
-docker exec -it php composer install
+docker exec -it php php -d memnory_limit=-1 composer.phar install
 ```
 
 ## Работа с докером
