@@ -127,3 +127,5 @@ docker stop $(docker ps -a -q)
 ```
 docker rm $(docker ps -a -q)
 ```
+
+Единственную настройку которую нужно поменять в docker-compose.yml это имя newtworks - вместо bitrix прописать то что в project_name

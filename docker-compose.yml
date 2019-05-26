@@ -3,7 +3,7 @@ version: '2'
 services:
     php:
         build: ./docker/php/${PHP_VERSION}
-        container_name: php
+        container_name: php_${PROJECT_NAME}
         volumes_from:
             - source
         ports:
@@ -14,11 +14,11 @@ services:
         environment:
             PHP_VERSION_NUMBER: ${PHP_VERSION}
         networks:
-            - bitrix
+            - ${PROJECT_NAME}
         restart: always
     web_server:
         build: ./docker/${WEB_SERVER_TYPE}
-        container_name: webserver
+        container_name: webserver_${PROJECT_NAME}
         depends_on:
             - source
         volumes_from:
@@ -29,12 +29,12 @@ services:
         links:
             - php
         networks:
-            - bitrix
+            - bitrix_${PROJECT_NAME}
         restart: always
     mysql:
         build: ./docker/mysql/${MYSQL_VERSION}
 #        image: mysql:${MYSQL_VERSION}
-        container_name: mysql
+        container_name: mysql_${PROJECT_NAME}
         volumes_from:
             - source
         ports:
@@ -45,21 +45,21 @@ services:
             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
         networks:
-            - bitrix
+            - ${PROJECT_NAME}
         restart: always
     memcached:
         image: memcached:1.5-alpine
-        container_name: memcached
+        container_name: memcached_${PROJECT_NAME}
         volumes_from:
             - source
         ports:
             - '${INTERFACE}:11211:11211'
         networks:
-            - bitrix
+            - ${PROJECT_NAME}
         restart: always
     source:
         image: alpine:latest
-        container_name: source
+        container_name: source_${PROJECT_NAME}
         volumes:
             - ./logs/${WEB_SERVER_TYPE}:/var/log/${WEB_SERVER_TYPE}
             - ./logs/php:/var/log/php
@@ -70,7 +70,7 @@ services:
             - ${SITE_PATH}:/var/www/bitrix
             - /etc/localtime:/etc/localtime/:ro
         networks:
-            - bitrix
+            - ${PROJECT_NAME}
 networks:
     bitrix:
         driver: bridge
