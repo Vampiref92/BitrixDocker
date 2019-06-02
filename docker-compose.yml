@@ -67,7 +67,7 @@ services:
             - ./logs/memcached:/var/log/memcached
             - ./data/mysql:/var/lib/mysql
             - ./data/memcached:/var/lib/memcached
-            - ${SITE_PATH}:/var/www/bitrix
+            - ${SITE_PATH}:/var/www
             - /etc/localtime:/etc/localtime/:ro
         networks:
             - ${PROJECT_NAME}

@@ -1,7 +1,7 @@
 FROM php:7.0-fpm
 ENV PHP_VERSION_NUMBER="7.0"
 
-WORKDIR "/var/www/bitrix"
+WORKDIR "/var/www"
 
 MAINTAINER vampiref92
 
