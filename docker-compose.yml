@@ -29,7 +29,7 @@ services:
         links:
             - php
         networks:
-            - bitrix_${PROJECT_NAME}
+            - ${PROJECT_NAME}
         restart: always
     mysql:
         build: ./docker/mysql/${MYSQL_VERSION}
