@@ -67,6 +67,7 @@ services:
             - ./logs/memcached:/var/log/memcached
             - ./data/mysql:/var/lib/mysql
             - ./data/memcached:/var/lib/memcached
+            - ./tmp/php_sessions:/sessions
             - ${SITE_PATH}:/var/www
             - /etc/localtime:/etc/localtime/:ro
         networks:

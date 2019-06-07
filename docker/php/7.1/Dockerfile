@@ -70,9 +70,8 @@ RUN docker-php-ext-install intl
 RUN docker-php-ext-install xsl
 RUN docker-php-ext-install soap
 
-COPY php-fpm.d/                     /etc/php/${PHP_VERSION_NUMBER}/fpm/pool.d/
-COPY conf.d/                        /etc/php/${PHP_VERSION_NUMBER}/fpm/conf.d/
-COPY conf.d/                        /etc/php/${PHP_VERSION_NUMBER}/cli/conf.d/
+COPY php-fpm.d/                     $PHP_INI_DIR/pool.d/
+COPY conf.d/                        $PHP_INI_DIR/conf.d/
 
 RUN usermod -u 1000 www-data
 
