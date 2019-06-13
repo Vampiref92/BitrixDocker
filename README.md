@@ -53,10 +53,14 @@ SITE_PATH=/var/www/bitrix  # Путь к директории Вашего са�
 - Запустите bitrixdock
 ```
 bash start.sh
+из проекта
+bash ../../start.sh
 ```
 Может понадобиться установить локальные службы
 ```
 bash stop_local.sh
+из проекта
+bash ../../stop_local.sh
 ```
 Чтобы проверить, что все сервисы запустились посмотрите список процессов ```docker ps```.  
 Посмотрите все прослушиваемые порты, должны быть 80, 11211, 9000 ```netstat -plnt```.  
@@ -90,19 +94,19 @@ mysql -u root -h 192.168.10.11 -P 33061 -p123
 
 ## Запуск генерации орм в докере
 ```
-docker exec -it php php -d memnory_limit=-1 bitrix/bitrix.php orm:annotate -m all
+docker exec -it #CONTAINER#(php_#PROJECT_NAME#) php -d memnory_limit=-1 bitrix/bitrix.php orm:annotate -m all
 ```
 Если с ошибками исключаем модули, может получиться примерно так
 ```
-docker exec -it php php -d memnory_limit=-1 bitrix/bitrix.php orm:annotate -m b24connector,bitrixcloud,blog,clouds,compression,fileman,highloadblock,landing,main,messageservice,mobileapp,perfmon,photogallery,rest,scale,search,security,seo,socialservices,subscribe,translate,ui,vote
+docker exec -it #CONTAINER#(php_#PROJECT_NAME#) php -d memnory_limit=-1 bitrix/bitrix.php orm:annotate -m b24connector,bitrixcloud,blog,clouds,compression,fileman,highloadblock,landing,main,messageservice,mobileapp,perfmon,photogallery,rest,scale,search,security,seo,socialservices,subscribe,translate,ui,vote
 ```
 
 ## Composer
 Composer усанавливает через докер:
 ```
-заходим в папку local(с composer.json)
-docker exec -it php php -d memnory_limit=-1 composer.phar install
+docker exec -it #CONTAINER#(php_#PROJECT_NAME#) bash -c "cd public/local && php -d memory_limit=-1 ./composer.phar install"
 ```
+
 либо как обычно локально с нужной версией php, например
 ```
 /usr/bin/php7.1 local/composer.phar install
