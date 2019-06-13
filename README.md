@@ -65,16 +65,19 @@ bash stop_local.sh
 ## Примечание
 - Если вы хотите начать с чистой установки Битрикса, скачайте файл [bitrixsetup.php](http://www.1c-bitrix.ru/download/scripts/bitrixsetup.php) в папку с сайтом. По умолчанию стоит папка ```/var/www/bitrix/```
 - В настройках подключения требуется указывать имя сервиса, например для подключения к mysql нужно указывать "mysql", а не "localhost". Пример [конфига](configs/.settings.php)  с подклчюением к mysql и memcached.
-- Для загрузки резервной копии в контейнер используйте команду: ```cat /var/www/bitrix/backup.sql | docker exec -i mysql /usr/bin/mysql -u root -p123 bitrix```
 
 ### Backup
 ```
-docker exec CONTAINER /usr/bin/mysqldump -u root --password=root DATABASE > backup.sqlвыпол
+docker exec #CONTAINER#(mysql_#PROJECT_NAME#) /usr/bin/mysqldump -u #user#(root) -p#pass#(123) #DATABASE#(bitrix) > backup.sql
 ```
 
 ### Restore
 ```
-cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root DATABASE
+cat backup.sql | docker exec -i #CONTAINER#(mysql_#PROJECT_NAME#) /usr/bin/mysql -u #user#(root( -p#pass#(123) #DATABASE#(bitrix)
+```
+
+```
+zcat backup.sql.gz | docker exec -i #CONTAINER#(mysql_#PROJECT_NAME#) /usr/bin/mysql -u #user#(root) -p#pass#(123) #DATABASE#(bitrix)
 ```
 
 ### Подключение к БД
