@@ -18,9 +18,11 @@ libpng-dev \
 libxml2-dev \
 libssl-dev \
 freetype* \
+php5-xdebug \
 && docker-php-ext-install -j$(nproc) iconv mcrypt mbstring mysqli pdo_mysql zip json ftp zip\
 && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-&& docker-php-ext-install -j$(nproc) gd
+&& docker-php-ext-install -j$(nproc) gd \
+&& docker-php-ext-enable xdebug
 
 RUN docker-php-ext-configure opcache --enable-opcache \
     && docker-php-ext-install opcache

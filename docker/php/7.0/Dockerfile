@@ -70,6 +70,8 @@ RUN docker-php-ext-install intl
 RUN docker-php-ext-install xsl
 RUN docker-php-ext-install soap
 
+RUN pecl install xdebug
+
 COPY php-fpm.d/                     $PHP_INI_DIR/pool.d/
 COPY conf.d/                        $PHP_INI_DIR/conf.d/
 
