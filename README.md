@@ -112,6 +112,13 @@ docker exec -it #CONTAINER#(php_#PROJECT_NAME#) bash -c "cd public/local && php 
 /usr/bin/php7.1 local/composer.phar install
 ```
 
+## Настрйока xdebug
+Languages & Frameworks -> PHP -> Debug -> Validate
+enable listening
+port 9000
+GBGp Proxy -> IDE key = PHPSTORM
+
+
 ## Работа с докером
 удаление всех мостов
 ```
