@@ -127,6 +127,20 @@ docker exec -it php_bitrix bash -c "cd public/local && php -d memory_limit=-1 ./
 /usr/bin/php7.1 local/composer.phar install
 ```
 
+## Запуск миграций
+```
+docker exec -it #CONTAINER#(php_#PROJECT_NAME#) php -d memory_limit=-1 public/local/tools/auto_deploy/migrate /var/www/public
+
+docker exec -it php_bitrix php -d memory_limit=-1 public/local/tools/auto_deploy/migrate /var/www/public
+```
+
+## Запуск автодеплоера
+```
+docker exec -it #CONTAINER#(php_#PROJECT_NAME#) php -d memory_limit=-1 public/local/tools/auto_deploy/deploy
+
+docker exec -it php_bitrix php -d memory_limit=-1 public/local/tools/auto_deploy/deploy
+```
+
 ## Настрйока xdebug
 Languages & Frameworks -> PHP -> Debug -> Validate
 enable listening
