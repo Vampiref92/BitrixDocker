@@ -110,7 +110,10 @@ docker exec -it #CONTAINER#(php_#PROJECT_NAME#) php -d memnory_limit=-1 public/b
 
 docker exec -it php_bitrix php -d memnory_limit=-1 public/bitrix/bitrix.php orm:annotate -m b24connector,bitrixcloud,blog,clouds,compression,fileman,highloadblock,landing,main,messageservice,mobileapp,perfmon,photogallery,rest,scale,search,security,seo,socialservices,subscribe,translate,ui,vote
 ```
-
+Получить список доступных модулей в php консоле
+```
+echo implode(',',array_column(\Bitrix\Main\ModuleManager::getInstalledModules(), 'ID'));
+```
 ## Composer
 Composer усанавливает через докер:
 ```
