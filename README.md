@@ -110,7 +110,10 @@ docker exec -it #CONTAINER#(php_#PROJECT_NAME#) php -d memnory_limit=-1 public/b
 
 docker exec -it php_bitrix php -d memnory_limit=-1 public/bitrix/bitrix.php orm:annotate -m b24connector,bitrixcloud,blog,clouds,compression,fileman,highloadblock,landing,main,messageservice,mobileapp,perfmon,photogallery,rest,scale,search,security,seo,socialservices,subscribe,translate,ui,vote
 ```
-
+Получить список доступных модулей в php консоле
+```
+echo implode(',',array_column(\Bitrix\Main\ModuleManager::getInstalledModules(), 'ID'));
+```
 ## Composer
 Composer усанавливает через докер:
 ```
@@ -122,6 +125,20 @@ docker exec -it php_bitrix bash -c "cd public/local && php -d memory_limit=-1 ./
 либо как обычно локально с нужной версией php, например
 ```
 /usr/bin/php7.1 local/composer.phar install
+```
+
+## Запуск миграций
+```
+docker exec -it #CONTAINER#(php_#PROJECT_NAME#) php -d memory_limit=-1 public/local/tools/auto_deploy/migrate /var/www/public
+
+docker exec -it php_bitrix php -d memory_limit=-1 public/local/tools/auto_deploy/migrate /var/www/public
+```
+
+## Запуск автодеплоера
+```
+docker exec -it #CONTAINER#(php_#PROJECT_NAME#) php -d memory_limit=-1 public/local/tools/auto_deploy/deploy
+
+docker exec -it php_bitrix php -d memory_limit=-1 public/local/tools/auto_deploy/deploy
 ```
 
 ## Настрйока xdebug
@@ -155,3 +172,8 @@ docker rm $(docker ps -a -q)
 ```
 
 Единственную настройку которую нужно поменять в docker-compose.yml это имя newtworks - вместо bitrix прописать то что в project_name
+
+### Диапазон адресов
+```
+192.168.10.1 -  192.168.10.255
+```
