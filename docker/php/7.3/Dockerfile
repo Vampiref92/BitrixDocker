@@ -52,7 +52,7 @@ RUN apt-get update \
     fonts-liberation \
     libexpat1 \
     libfontenc1 \
-    libxfont1 \
+#    libxfont1 \
     x11-common \
     xfonts-encodings \
     wget \
